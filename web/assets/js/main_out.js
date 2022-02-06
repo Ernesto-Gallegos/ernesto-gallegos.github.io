@@ -500,10 +500,11 @@
         writer._b.push(0, 0, 0, 0);
         wsSend(writer);
     }
-    function sendPlay(name) {
+    function sendPlay(name, skin) {
         const writer = new Writer(true);
         writer.setUint8(0x00);
         writer.setStringUTF8(name);
+	writer.setStringUTF8(skin);
         wsSend(writer);
     }
     function sendChat(text) {
@@ -646,7 +647,7 @@
     };
     
     function sort_skin() {
-       fetch('./skinList.json').then(resp => resp.json()).then(data => {
+       fetch('./web/skinList.json').then(resp => resp.json()).then(data => {
         knownSkins = data["skinConfig"];
     });
        byId('gallery-btn').style.display = 'inline-block';    
@@ -1307,9 +1308,8 @@
             }
         }
         setName(rawName) {
-            const {name, skin} = Cell.parseName(rawName);
+            const {name} = Cell.parseName(rawName);
             this.name = name;
-            this.setSkin(skin);
         }
         setSkin(value) {
             this.skin = (value && value[0] === '%' ? value.slice(1) : value) || this.skin;
@@ -1619,8 +1619,7 @@
         window.addEventListener('beforeunload', storeSettings);
         document.addEventListener('wheel', handleScroll, {passive: true});
         byId('play-btn').addEventListener('click', () => {
-            const skin = settings.skin;
-            sendPlay((skin ? `<${skin}>` : '') + settings.nick);
+            sendPlay(settings.name, settings.skin);
             hideESCOverlay();
         });
         window.onkeydown = keydown;
