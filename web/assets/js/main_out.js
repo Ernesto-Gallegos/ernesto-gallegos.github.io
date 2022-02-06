@@ -1718,9 +1718,6 @@
         byId('skin').value = a;
         settings.skin = a;
         byId('gallery').hide();
-    };	
-    window.loadedSuccess = () => {
-	console.log('Successfully loaded client');
     };
     window.openSkinsList = () => {
         if (byId('gallery-body').innerHTML === '') buildGallery();
