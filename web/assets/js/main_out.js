@@ -729,7 +729,7 @@
         let c = '', i; 
         for (i = 0; i < knownSkins.length; i++) {
             c += `<li class="skin" onclick="changeSkin('${knownSkins[i].skinName}')">`;
-            c += `<img class="circular" src="./skins/${knownSkins[i].skinName}.png">`;
+            c += `<img class="circular" src="./web/skins/${knownSkins[i].skinName}.png">`;
             c += `<h4 class="skinName">${knownSkins[i].skinName}</h4>`;
             c += '</li>';
         }
