@@ -1719,6 +1719,9 @@
         settings.skin = a;
         byId('gallery').hide();
     };	
+    window.loadedSuccess = () => {
+	console.log('Successfully loaded client');
+    };
     window.openSkinsList = () => {
         if (byId('gallery-body').innerHTML === '') buildGallery();
         byId('gallery').show(0.5);
