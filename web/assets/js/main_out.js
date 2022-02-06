@@ -1619,7 +1619,7 @@
         window.addEventListener('beforeunload', storeSettings);
         document.addEventListener('wheel', handleScroll, {passive: true});
         byId('play-btn').addEventListener('click', () => {
-            sendPlay(settings.name, settings.skin);
+            sendPlay(settings.nick, settings.skin);
             hideESCOverlay();
         });
         window.onkeydown = keydown;
